@@ -1,73 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta name="google-adsense-account" content="ca-pub-9890571230448286">
-    <meta name="description" content="Leve IMC — Calcule seu IMC e descubra dicas para uma vida mais saudável.">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Leve IMC — Calcule seu IMC e descubra dicas para uma vida mais saudável." />
     <title>Leve IMC</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- Google AdSense: substitua ca-pub-REPLACE_BY_YOUR_ID pelo seu Publisher ID -->
+    <!-- AdSense global (substitua o ca-pub se necessário) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-9890571230448286"></script>
-</head>
-<body>
-    <!-- Ad: bloco responsivo logo abaixo do header -->
-    <div style="max-width:1000px;margin:10px auto;padding:0 20px;">
-        <!-- Google AdSense responsivo: substitua data-ad-slot pelo seu slot -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-9890571230448286"
-             data-ad-slot="REPLACE_WITH_AD_SLOT"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="index.html">Leve IMC</a>
-            <nav class="main-nav">
-                <a href="imc.html">Calculadora IMC</a>
-                <a href="tmb.html">Calculadora TMB</a>
-                <a href="artigos/artigo1.html">Artigos</a>
-                <a href="sobre.html">Sobre</a>
-                <a href="contato.html">Contato</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-        <h1>Bem-vindo ao Leve IMC</h1>
-        <p class="lead">Ferramentas simples para acompanhar sua saúde: calcule seu IMC ou seu metabolismo basal em páginas dedicadas.</p>
-
-        <div class="cards">
-            <a href="imc.html" class="card">
-                <h3>Calculadora IMC</h3>
-                <p>Calcule seu Índice de Massa Corporal e veja dicas rápidas.</p>
-            </a>
-
-            <a href="tmb.html" class="card">
-                <h3>Calculadora TMB</h3>
-                <p>Calcule seu metabolismo basal e necessidades calóricas.</p>
-            </a>
-        </div>
-
-        <hr class="separador">
-
-        <section class="artigos">
-            <p>Leia nossos artigos:</p>
-            <a href="artigos/artigo1.html" class="artigo-card" target="_blank">
-                <h3>O que é IMC e como calcular</h3>
-                <p>Entenda o Índice de Massa Corporal e como ele pode ajudar a acompanhar sua saúde.</p>
-            </a>
-            <a href="artigos/artigo4.html" class="artigo-card" target="_blank">
-                <h3>O que é Metabolismo Basal e por que ele é importante</h3>
-                <p>Saiba mais sobre o que é Metabolismo Basal.</p>
-            </a>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Leve IMC. <a href="politica.html">Política de Privacidade</a></p>
-    </footer>
-</body>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
