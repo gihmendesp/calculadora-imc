@@ -1,0 +1,52 @@
+/* Global styles and modern header/navigation */
+:root{
+  --accent:#4CAF50;
+  --bg-gradient: linear-gradient(135deg,#a1c4fd,#c2e9fb);
+  --card-bg:#fff;
+  --muted:#555;
+}
+*{box-sizing:border-box}
+body{
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  margin:0;
+  background:var(--bg-gradient);
+  color:#333;
+}
+.container{max-width:1000px;margin:28px auto;padding:20px}
+
+/* Header */
+.site-header{background:rgba(255,255,255,0.06);backdrop-filter: blur(6px);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:700;color:var(--accent);text-decoration:none;font-size:20px}
+.main-nav a{margin-left:16px;color:#222;text-decoration:none;font-weight:600}
+.main-nav a:hover{color:var(--accent)}
+
+/* Cards on index */
+.cards{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+.card{flex:1 1 220px;background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,0.12);text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-6px);box-shadow:0 10px 28px rgba(0,0,0,0.18)}
+.card h3{margin:0 0 8px;color:var(--accent)}
+.lead{color:var(--muted);font-size:16px}
+
+.artigo-card{display:block;margin-top:12px;text-decoration:none;color:inherit}
+.artigo-card h3{margin:0;color:var(--accent)}
+
+.separador{height:4px;background:linear-gradient(90deg,#a1c4fd,#c2e9fb);border-radius:2px;margin:20px 0}
+
+/* Form styles used by calculator pages */
+input,select,button{display:block;width:100%;padding:10px;margin:10px 0;border-radius:8px;border:1px solid #ddd}
+button{background:var(--accent);color:#fff;border:none;cursor:pointer}
+button:hover{opacity:.95}
+
+.resultado{margin-top:10px;font-weight:700}
+.history{margin-top:12px;max-height:150px;overflow:auto}
+.history-item{background:#f1f1f1;margin:6px 0;padding:8px;border-radius:6px}
+
+.resultado-card{background:linear-gradient(135deg,#e3f2fd,#bbdefb);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);}
+
+footer{padding:28px;text-align:center;color:#666}
+
+@media(max-width:700px){
+  .main-nav{display:none}
+  .cards{flex-direction:column}
+}

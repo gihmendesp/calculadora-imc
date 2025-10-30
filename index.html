@@ -1,426 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta name="description" content="Calcule seu IMC e metabolismo basal (TMB) de forma inteligente, acompanhe seu histórico e receba dicas de saúde e bem-estar.">
+    <meta name="description" content="Leve IMC — Calcule seu IMC e descubra dicas para uma vida mais saudável.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leve IMC</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            padding: 30px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        h1, h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        input, select {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            padding: 12px 25px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        p.resultado {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        canvas {
-            margin-top: 30px;
-        }
-
-        .history {
-            margin-top: 20px;
-            max-height: 150px;
-            overflow-y: auto;
-            text-align: left;
-        }
-
-        .history-item {
-            background-color: #f1f1f1;
-            margin: 5px 0;
-            padding: 8px;
-            border-radius: 5px;
-        }
-
-        .ads, .afiliados, .artigos {
-            margin-top: 20px;
-        }
-
-        .afiliados a {
-            display: block;
-            margin: 5px 0;
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .afiliados a:hover {
-            text-decoration: underline;
-        }
-
-        /* Cards de artigos */
-        .artigos p {
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .artigo-card {
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 15px 20px;
-            margin: 10px 0;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none;
-            color: #333;
-            display: block;
-        }
-
-        .artigo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-
-        .artigo-card h3 {
-            margin: 0 0 5px 0;
-            font-size: 16px;
-            color: #4CAF50;
-        }
-
-        .artigo-card p {
-            margin: 0;
-            font-size: 14px;
-            color: #555;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 14px;
-            margin: 50px 0 20px 0;
-        }
-
-        footer a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .calculo-basal {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #eee;
-        }
-
-        /* --- Novo estilo do resultado TMB --- */
-        .resultado-card {
-            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-            color: #333;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .resultado-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-        }
-
-        .resultado-card h3 {
-            font-size: 20px;
-            color: #1976d2;
-            margin-bottom: 10px;
-        }
-
-        .resultado-card p {
-            font-size: 16px;
-            margin: 5px 0;
-        }
-
-        .resultado-card strong {
-            color: #0d47a1;
-        }
-
-        /* Linha decorativa entre seções */
-        .separador {
-            height: 4px;
-            background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
-            border-radius: 2px;
-            margin: 25px 0;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Leve IMC</h1>
-        <input type="number" id="peso" placeholder="Digite seu peso (kg)">
-        <input type="number" id="altura" placeholder="Digite sua altura (em metros, exemplo: 1,64)">
-        <button onclick="calcularIMC()">Calcular IMC</button>
-        <p class="resultado" id="resultado"></p>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">Leve IMC</a>
+            <nav class="main-nav">
+                <a href="imc.html">Calculadora IMC</a>
+                <a href="tmb.html">Calculadora TMB</a>
+                <a href="artigos/artigo1.html">Artigos</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+    </header>
 
-        <canvas id="imcChart" width="400" height="200"></canvas>
+    <main class="container">
+        <h1>Bem-vindo ao Leve IMC</h1>
+        <p class="lead">Ferramentas simples para acompanhar sua saúde: calcule seu IMC ou seu metabolismo basal em páginas dedicadas.</p>
 
-        <div class="history" id="history"></div>
+        <div class="cards">
+            <a href="imc.html" class="card">
+                <h3>Calculadora IMC</h3>
+                <p>Calcule seu Índice de Massa Corporal e veja dicas rápidas.</p>
+            </a>
 
-        <!-- CALCULADORA DE METABOLISMO BASAL -->
-        <div class="calculo-basal">
-            <h2>Calcule seu Metabolismo Basal (TMB)</h2>
-            <p style="font-size:14px; color:#555; margin-top:6px;">
-              O metabolismo basal é a energia gasta em repouso. Abaixo calculamos também a necessidade diária
-              de calorias (NDC) para diferentes níveis de atividade e uma faixa segura sugerida para perda de peso.
-            </p>
-            <input type="number" id="idade" placeholder="Idade (anos)">
-            <input type="number" id="pesoTMB" placeholder="Peso (kg)">
-            <input type="number" id="alturaTMB" placeholder="Altura (em metros, exemplo: 1,64)">
-            <select id="sexo">
-                <option value="">Selecione o sexo</option>
-                <option value="masculino">Masculino</option>
-                <option value="feminino">Feminino</option>
-            </select>
-            <button onclick="calcularTMB()">Calcular TMB</button>
-            <div id="resultadoTMB"></div>
+            <a href="tmb.html" class="card">
+                <h3>Calculadora TMB</h3>
+                <p>Calcule seu metabolismo basal e necessidades calóricas.</p>
+            </a>
         </div>
 
-        <div class="afiliados" style="margin-top:40px;">
-            <p><strong>Confira produtos recomendados para saúde e bem-estar:</strong></p>
-            <a href="" target="_blank">Plano 30 dias para emagrecer de vez</a>
-            <a href="" target="_blank">Método Magra Online</a>
-        </div>
+        <hr class="separador">
 
-        <!-- Linha decorativa -->
-        <div class="separador"></div>
-
-        <div class="artigos" style="margin-top:40px;">
+        <section class="artigos">
             <p>Leia nossos artigos:</p>
-
             <a href="artigos/artigo1.html" class="artigo-card" target="_blank">
                 <h3>O que é IMC e como calcular</h3>
                 <p>Entenda o Índice de Massa Corporal e como ele pode ajudar a acompanhar sua saúde.</p>
             </a>
-
             <a href="artigos/artigo4.html" class="artigo-card" target="_blank">
                 <h3>O que é Metabolismo Basal e por que ele é importante</h3>
                 <p>Saiba mais sobre o que é Metabolismo Basal.</p>
             </a>
-
-            <a href="artigos/artigo3.html" class="artigo-card" target="_blank">
-                <h3>Dicas para manter hábitos saudáveis</h3>
-                <p>Confira estratégias práticas para ter uma alimentação equilibrada e mais bem-estar.</p>
-            </a>
-
-             <a href="artigos/artigo2.html" class="artigo-card" target="_blank">
-                <h3>Diferença entre IMC e percentual de gordura</h3>
-                <p>Saiba qual indicador é mais adequado para acompanhar sua composição corporal.</p>
-            </a>
-
-        </div>
-    </div>
+        </section>
+    </main>
 
     <footer>
-        <p style="font-size: 12px; color: #888;">
-            &copy; 2025 Leve IMC. Todos os direitos reservados. <br>
-            <a href="sobre.html">Sobre</a> |
-            <a href="politica.html">Política de Privacidade</a> |
-            <a href="contato.html">Contato</a>
-        </p>
+        <p>&copy; 2025 Leve IMC. <a href="politica.html">Política de Privacidade</a></p>
     </footer>
-
-    <script>
-        // --- HISTÓRICO DE IMC ---
-        let imcHistory = JSON.parse(localStorage.getItem('imcHistory')) || [];
-
-        function atualizarHistorico() {
-            const historyDiv = document.getElementById("history");
-            historyDiv.innerHTML = "";
-            imcHistory.slice(-5).forEach(item => {
-                const div = document.createElement("div");
-                div.className = "history-item";
-                div.textContent = item;
-                historyDiv.appendChild(div);
-            });
-        }
-
-        function calcularIMC() {
-            const peso = parseFloat(document.getElementById("peso").value);
-            const altura = parseFloat(document.getElementById("altura").value);
-            const resultado = document.getElementById("resultado");
-
-            if (!peso || !altura) {
-                resultado.innerText = "Por favor, preencha peso e altura corretamente.";
-                return;
-            }
-
-            const imc = peso / (altura * altura);
-            const imcFix = imc.toFixed(2);
-
-            let classificacao = "";
-            let dica = "";
-
-            if (imc < 18.5) {
-                classificacao = "Abaixo do peso";
-                dica = "Considere aumentar a ingestão calórica com alimentos nutritivos.";
-            } else if (imc >= 18.5 && imc < 25) {
-                classificacao = "Peso normal";
-                dica = "Mantenha hábitos saudáveis para continuar assim!";
-            } else if (imc >= 25 && imc < 30) {
-                classificacao = "Sobrepeso";
-                dica = "Inclua atividades físicas regulares e atenção à alimentação.";
-            } else if (imc >= 30 && imc < 35) {
-                classificacao = "Obesidade grau I";
-                dica = "Procure acompanhamento médico ou nutricional para orientação.";
-            } else if (imc >= 35 && imc < 40) {
-                classificacao = "Obesidade grau II";
-                dica = "É importante buscar ajuda profissional para reduzir riscos à saúde.";
-            } else {
-                classificacao = "Obesidade grau III";
-                dica = "Procure acompanhamento médico imediatamente para avaliação completa.";
-            }
-
-            resultado.innerText = `Seu IMC é ${imcFix} - ${classificacao}\n${dica}`;
-
-            imcHistory.push(`Peso: ${peso}kg, Altura: ${altura}m, IMC: ${imcFix} (${classificacao})`);
-            localStorage.setItem('imcHistory', JSON.stringify(imcHistory));
-
-            atualizarHistorico();
-
-            const ctx = document.getElementById('imcChart').getContext('2d');
-            if (window.imcChartInstance) {
-                window.imcChartInstance.destroy();
-            }
-            window.imcChartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['IMC'],
-                    datasets: [{
-                        label: 'IMC',
-                        data: [imcFix],
-                        backgroundColor: imc < 18.5 ? '#1E90FF' :
-                                         imc < 25 ? '#32CD32' :
-                                         imc < 30 ? '#FFD700' :
-                                         imc < 35 ? '#FFA500' : '#FF4500'
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    scales: {
-                        x: { min: 0, max: 50 }
-                    }
-                }
-            });
-        }
-
-        atualizarHistorico();
-
-        // --- CÁLCULO DO METABOLISMO BASAL (TMB) ---
-        function calcularTMB() {
-            const peso = parseFloat(document.getElementById("pesoTMB").value);
-            const alturaMetros = parseFloat(document.getElementById("alturaTMB").value);
-            const idade = parseFloat(document.getElementById("idade").value);
-            const sexo = document.getElementById("sexo").value;
-            const resultadoTMB = document.getElementById("resultadoTMB");
-
-            if (!peso || !alturaMetros || !idade || !sexo) {
-                resultadoTMB.innerHTML = "<p>Por favor, preencha todos os campos.</p>";
-                return;
-            }
-
-            const altura = alturaMetros * 100; // cm
-
-            let tmb;
-            if (sexo === "masculino") {
-                tmb = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * idade);
-            } else {
-                tmb = 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * idade);
-            }
-
-            const multSedentario = 1.25;
-            const multModerado  = 1.35;
-            const multIntenso   = 1.45;
-
-            const ndcSedentario = tmb * multSedentario;
-            const ndcModerado   = tmb * multModerado;
-            const ndcIntenso    = tmb * multIntenso;
-
-            const perdaMin = Math.max(tmb, ndcSedentario - 600);
-            const perdaMax = Math.max(tmb, ndcSedentario - 500);
-
-            function f(n) { return Number(n).toFixed(2); }
-
-            resultadoTMB.innerHTML = `
-                <div class="resultado-card">
-                    <h3>🔥 Seu Metabolismo Basal (TMB)</h3>
-                    <p><strong>${f(tmb)} kcal/dia</strong></p>
-                    <hr style="border:none; border-top:1px solid rgba(0,0,0,0.06); margin:12px 0;">
-                    <p style="margin:6px 0;"><strong>Necessidade Diária de Calorias (NDC)</strong></p>
-                    <p style="margin:4px 0;">Nenhuma atividade: <strong>${f(ndcSedentario)} kcal/dia</strong></p>
-                    <p style="margin:4px 0;">Atividade moderada: <strong>${f(ndcModerado)} kcal/dia</strong></p>
-                    <p style="margin:4px 0;">Atividade intensa: <strong>${f(ndcIntenso)} kcal/dia</strong></p>
-
-                    <hr style="border:none; border-top:1px solid rgba(0,0,0,0.06); margin:12px 0;">
-                    <p style="margin:6px 0;"><strong>Para perder peso (exemplo)</strong></p>
-                    <p style="margin:4px 0;">
-                        Sugestão de ingestão diária: <strong>${Math.round(perdaMin)} — ${Math.round(perdaMax)} kcal/dia</strong>
-                        <br>
-                        (Para perder peso de forma segura, reduza de 500 a 600 kcal em relação à sua NDC sedentária, sem nunca consumir menos que o TMB.)
-                    </p>
-
-                    <p style="font-size:13px; color:#555; margin-top:8px;">
-                        Observação: ajuste a base (NDC) conforme seu nível de atividade real. Consulte um profissional de saúde antes de mudanças drásticas.
-                    </p>
-                </div>
-            `;
-        }
-    </script>
 </body>
 </html>
