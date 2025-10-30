@@ -5,7 +5,10 @@
     { "src": "contato.html", "use": "@vercel/static" },
     { "src": "sobre.html", "use": "@vercel/static" },
     { "src": "politica.html", "use": "@vercel/static" },
-    { "src": "artigos/**", "use": "@vercel/static" }
+    { "src": "imc.html", "use": "@vercel/static" },
+    { "src": "tmb.html", "use": "@vercel/static" },
+    { "src": "artigos/**", "use": "@vercel/static" },
+    { "src": "assets/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/", "dest": "/index.html" },
