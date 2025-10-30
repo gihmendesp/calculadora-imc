@@ -1,17 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "contato.html", "use": "@vercel/static" },
-    { "src": "sobre.html", "use": "@vercel/static" },
-    { "src": "politica.html", "use": "@vercel/static" },
-    { "src": "imc.html", "use": "@vercel/static" },
-    { "src": "tmb.html", "use": "@vercel/static" },
-    { "src": "artigos/**", "use": "@vercel/static" },
-    { "src": "assets/**", "use": "@vercel/static" }
+    { "src": "package.json", "use": "@vercel/static-build" }
   ],
   "routes": [
-    { "src": "/", "dest": "/index.html" },
-    { "src": "/(.*)", "dest": "/$1" }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
